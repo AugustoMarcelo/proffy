@@ -15,7 +15,13 @@ The purpose of the application is to propose an environment where people can reg
 
 ## ⚙ Technologies
   - **Back end**
-    ...
+    - NodeJS
+    - Typescript
+    - express
+    - sqlite3
+    - knex
+    - cors
+    - ts-node-dev
   
   - **Front end**
     - ReactJS
@@ -37,10 +43,22 @@ The purpose of the application is to propose an environment where people can reg
 
   > Running web project
   ```bash
-    # Accesing web project
+    # Accessing web project
     cd web
     
     # Running web project
+    yarn start
+  ```
+
+  > Running server
+  ```bash
+    # Accessing server project
+    cd server
+
+    # Run migrations to create the tables
+    yarn knex:migrate
+
+    # Run server
     yarn start
   ```
 
