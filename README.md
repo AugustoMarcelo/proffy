@@ -108,7 +108,7 @@ The purpose of the application is to propose an environment where people can reg
    - [ ] Login/Logout
  - [ ] Password recovery
  - [ ] Profile management
- - [ ] Splash Screen (Mobile)
+ - [x] Splash Screen (Mobile)
  - [ ] Pagination in the list of Proffys
  - [ ] Display of available times in the list of Proffys
  - [ ] Save favorite Proffys on the database
