@@ -3,16 +3,43 @@ import { View, ScrollView, Text, TextInput } from 'react-native';
 import { BorderlessButton, RectButton } from 'react-native-gesture-handler';
 import { Feather } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-community/async-storage';
+import DropDownPicker from 'react-native-dropdown-picker';
 
 import api from '../../services/api';
 
 import PageHeader from '../../components/PageHeader';
 import TeacherItem, { Teacher } from '../../components/TeacherItem';
 
-import styles from './styles';
+import styles, { dropdownStyles } from './styles';
 
 function TeacherList() {
   const [isFiltersVisible, setIsFiltersVisible] = useState(false);
+
+  const [subjects] = useState([
+    {label: "Matemática", value:"Matemática"},
+    {label: "Português", value: "Português"},
+    {label: "Ciências", value: "Ciências"},
+    {label: "Geografia", value: "Geografia"},
+    {label: "História", value: "História"},
+    {label: "Física", value: "Física"},
+  ]);
+
+  const [week_days] = useState([
+    {label: "Domingo", value: "0"},
+    {label: "Segunda", value:"1"},
+    {label: "Terça", value: "2"},
+    {label: "Quarta", value: "3"},
+    {label: "Quinta", value: "4"},
+    {label: "Sexta", value: "5"},
+    {label: "Sábado", value: "6"},
+  ]);
+
+  const [times] = useState(Array.from({ length: 24 }).map((_, i) => {
+    return {
+      label: i === 1 ? `${i} hora` : `${i} horas`,
+      value: `${i}:`.padEnd(i > 9 ? 5 : 4, '0'),
+    }
+  }));
 
   const [teachers, setTeachers] = useState([]);
   const [favorites, setFavorites] = useState<number[]>([]);
@@ -64,34 +91,96 @@ function TeacherList() {
         {isFiltersVisible && (
           <View style={styles.searchForm}>
             <Text style={styles.label}>Matéria</Text>
-            <TextInput 
-              style={styles.input}
-              value={subject}
-              onChangeText={setSubject}
-              placeholder="Qual a matéria?"
-              placeholderTextColor="#c1bccc"
-            />
-
-            <View style={styles.inputGroup}>
+            <View style={{ position: 'relative' }}>
+              <DropDownPicker
+                zIndex={5000}
+                placeholder="Selecione"
+                items={subjects}
+                placeholderStyle={{ color: '#C1BCCC' }}
+                defaultValue={subject}
+                containerStyle={styles.dropdown}
+                dropDownStyle={dropdownStyles.box}
+                dropDownMaxHeight={200}
+                arrowColor="#9C98A6"
+                labelStyle={{
+                  fontFamily: 'Poppins_400Regular',
+                  color: '#6A6180',
+                }}
+                itemStyle={{
+                  justifyContent: 'flex-start',
+                  paddingHorizontal: 12,
+                  paddingVertical: 13,
+                }}
+                activeLabelStyle={{
+                  fontFamily: 'Poppins_600SemiBold'
+                }}
+                activeItemStyle={{
+                  borderLeftWidth: 2,
+                  borderStyle: 'solid',
+                  borderColor: '#8257E5',
+                  backgroundColor: '#EBEBF5',
+                  paddingLeft: 10,
+                }}
+                onChangeItem={item => setSubject(item.value)}
+              />
+            </View>
+            
+            <View style={[styles.inputGroup, { position: 'relative' }]}>
               <View style={styles.inputBlock}>
                 <Text style={styles.label}>Dia da semana</Text>
-                <TextInput 
-                  style={styles.input}
-                  value={week_day}
-                  onChangeText={setWeekDay}
-                  placeholder="Qual o dia?"
-                  placeholderTextColor="#c1bccc"
+                <DropDownPicker
+                  zIndex={4000}
+                  style={{ position: 'relative' }}
+                  placeholder="Selecione"
+                  items={week_days}
+                  placeholderStyle={{ color: '#C1BCCC' }}
+                  defaultValue={week_day}
+                  containerStyle={styles.dropdown}
+                  dropDownStyle={dropdownStyles.box}
+                  dropDownMaxHeight={100}
+                  arrowColor="#9C98A6"
+                  labelStyle={{
+                    fontFamily: 'Poppins_400Regular',
+                    color: '#6A6180',
+                  }}
+                  itemStyle={{
+                    justifyContent: 'flex-start',
+                    paddingHorizontal: 12,
+                    paddingVertical: 13,
+                  }}
+                  activeLabelStyle={{
+                    fontFamily: 'Poppins_600SemiBold'
+                  }}
+                  activeItemStyle={{
+                    borderLeftWidth: 2,
+                    borderStyle: 'solid',
+                    borderColor: '#8257E5',
+                    backgroundColor: '#EBEBF5',
+                    paddingLeft: 10,
+                  }}
+                  onChangeItem={item => setWeekDay(item.value)}
                 />
               </View>
-
               <View style={styles.inputBlock}>
                 <Text style={styles.label}>Horário</Text>
-                <TextInput 
-                  style={styles.input}
-                  value={time}
-                  onChangeText={setTime}
-                  placeholder="Qual o horário?"
-                  placeholderTextColor="#c1bccc"
+                <DropDownPicker
+                  zIndex={3000}
+                  style={{ position: 'relative' }}
+                  placeholder="Selecione"
+                  items={times}
+                  placeholderStyle={{ color: '#C1BCCC' }}
+                  defaultValue={time}
+                  containerStyle={styles.dropdown}
+                  dropDownStyle={dropdownStyles.box}
+                  dropDownMaxHeight={100}
+                  arrowColor="#9C98A6"
+                  labelStyle={dropdownStyles.label}
+                  itemStyle={dropdownStyles.item}
+                  activeLabelStyle={{
+                    fontFamily: 'Poppins_600SemiBold'
+                  }}
+                  activeItemStyle={dropdownStyles.activeItem}
+                  onChangeItem={item => setTime(item.value)}
                 />
               </View>
             </View>

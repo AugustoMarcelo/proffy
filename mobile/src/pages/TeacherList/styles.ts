@@ -38,6 +38,12 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
 
+  dropdown: {
+    height: 54,
+    marginTop: 4,
+    marginBottom: 16
+  },
+
   submitButton: {
     backgroundColor: '#04d361',
     flexDirection: 'row',
@@ -51,6 +57,33 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontFamily: 'Archivo_700Bold',
     fontSize: 16,
+  }
+});
+
+export const dropdownStyles = StyleSheet.create({
+  box: {
+    paddingHorizontal: 0,
+    paddingVertical: 0,
+    // borderWidth: 0,
+  },
+
+  label: {
+    fontFamily: 'Poppins_400Regular',
+    color: '#6A6180',
+  },
+
+  item: {
+    justifyContent: 'flex-start',
+    paddingHorizontal: 12,
+    paddingVertical: 13,
+  },
+
+  activeItem: {
+    borderLeftWidth: 2,
+    borderStyle: 'solid',
+    borderColor: '#8257E5',
+    backgroundColor: '#EBEBF5',
+    paddingLeft: 10,
   }
 });
 
