@@ -86,7 +86,7 @@ The purpose of the application is to propose an environment where people can reg
 
   ---
 
-  <img src="https://user-images.githubusercontent.com/11545976/89678321-5be34780-d8c5-11ea-8936-bb9ed6226b73.gif" width="200" />
+  <img src="https://user-images.githubusercontent.com/11545976/89721743-a8a74b00-d9b7-11ea-9e44-7a053345f68c.gif" width="200" />
 </h1>
 
 ---
