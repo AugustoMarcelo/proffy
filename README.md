@@ -35,6 +35,8 @@ The purpose of the application is to propose an environment where people can reg
     - Typescript
     - AsyncStorage
     - axios
+    - [react-native-swiper](https://github.com/leecade/react-native-swiper) (to create onboarding page)
+    - [react-native-dropdown-picker](https://github.com/hossein-zare/react-native-dropdown-picker) (to make customizable dropdowns)
 
 ---
 
@@ -96,6 +98,7 @@ The purpose of the application is to propose an environment where people can reg
 
 ## 🚧 Proffy 2.0
 
+ - [x] Onboarding
  - [ ] Authentication
    - [ ] Login/Logout
  - [ ] Password recovery
