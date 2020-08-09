@@ -95,19 +95,12 @@ The purpose of the application is to propose an environment where people can reg
 
 ## 🚧 Proffy 2.0
 
-<<<<<<< HEAD
  - [x] Onboarding
-=======
->>>>>>> fe3a255... :construction: described next features to be implemented
  - [ ] Authentication
    - [ ] Login/Logout
  - [ ] Password recovery
  - [ ] Profile management
-<<<<<<< HEAD
  - [x] Splash Screen (Mobile)
-=======
- - [ ] Splash Screen (Mobile)
->>>>>>> fe3a255... :construction: described next features to be implemented
  - [ ] Pagination in the list of Proffys
  - [ ] Display of available times in the list of Proffys
  - [ ] Save favorite Proffys on the database
