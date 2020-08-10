@@ -29,7 +29,10 @@ The purpose of the application is to propose an environment where people can reg
     - react-router-dom
   
   - **Mobile**
-    ...
+    - Expo
+    - Typescript
+    - AsyncStorage
+    - axios
 
 ---
 
@@ -62,10 +65,24 @@ The purpose of the application is to propose an environment where people can reg
     yarn start
   ```
 
+  > Running mobile project
+  > You will need to download the Expo app. When the application starts, scan the qrcode with the Expo you installed.
+  ```bash
+    # Accessing mobile project
+    cd mobile
+    # Change the IP in services/api.ts to connect with the back end
+    cd services
+    # Running
+    yarn start
+  ```
 ---
 
 ## 📷 Previews
 
 <h1 align="center">
   <img src="https://user-images.githubusercontent.com/11545976/89472198-3edc3680-d756-11ea-8d46-52db44c754a6.gif" />
+
+  ---
+
+  <img src="https://user-images.githubusercontent.com/11545976/89678321-5be34780-d8c5-11ea-8936-bb9ed6226b73.gif" width="200" />
 </h1>
