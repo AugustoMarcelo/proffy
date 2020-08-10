@@ -27,6 +27,7 @@ The purpose of the application is to propose an environment where people can reg
     - ReactJS
     - Typescript
     - react-router-dom
+    - axios
   
   - **Mobile**
     - Expo
@@ -86,3 +87,4 @@ The purpose of the application is to propose an environment where people can reg
 
   <img src="https://user-images.githubusercontent.com/11545976/89678321-5be34780-d8c5-11ea-8936-bb9ed6226b73.gif" width="200" />
 </h1>
+
