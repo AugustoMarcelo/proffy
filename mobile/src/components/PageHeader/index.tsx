@@ -31,6 +31,8 @@ const PageHeader: React.FC<PageHeaderProps> = ({
           <Image source={backIcon} resizeMode="contain" />
         </BorderlessButton>
 
+        <Text style={styles.pageModeText}>Estudar</Text>
+
         <Image source={logoImg} resizeMode="contain" />
       </View>
 
