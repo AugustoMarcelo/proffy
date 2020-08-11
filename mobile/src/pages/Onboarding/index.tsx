@@ -20,7 +20,7 @@ function Onboarding() {
   }
 
   function handleNavigateToLoginPage() {
-    navigate('Landing');
+    navigate('Login');
   }
 
   return (
