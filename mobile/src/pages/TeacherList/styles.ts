@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
   dropdown: {
     height: 54,
     marginTop: 4,
-    marginBottom: 16
+    marginBottom: 16,
   },
 
   submitButton: {
@@ -57,14 +57,13 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontFamily: 'Archivo_700Bold',
     fontSize: 16,
-  }
+  },
 });
 
 export const dropdownStyles = StyleSheet.create({
   box: {
     paddingHorizontal: 0,
     paddingVertical: 0,
-    // borderWidth: 0,
   },
 
   label: {
@@ -84,7 +83,7 @@ export const dropdownStyles = StyleSheet.create({
     borderColor: '#8257E5',
     backgroundColor: '#EBEBF5',
     paddingLeft: 10,
-  }
+  },
 });
 
 export default styles;

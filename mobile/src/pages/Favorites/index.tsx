@@ -8,7 +8,7 @@ import TeacherItem, { Teacher } from '../../components/TeacherItem';
 
 import styles from './styles';
 
-function Favorites() {
+const Favorites: React.FC = () => {
   const [favorites, setFavorites] = useState([]);
 
   function loadFavorites() {
@@ -36,17 +36,12 @@ function Favorites() {
           paddingBottom: 16,
         }}
       >
-        {favorites.map(
-          (teacher: Teacher) => 
-            <TeacherItem 
-              key={teacher.id} 
-              teacher={teacher}
-              favorited
-            />
-        )}
+        {favorites.map((teacher: Teacher) => (
+          <TeacherItem key={teacher.id} teacher={teacher} favorited />
+        ))}
       </ScrollView>
     </View>
   );
-}
+};
 
 export default Favorites;

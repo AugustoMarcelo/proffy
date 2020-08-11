@@ -1,13 +1,13 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Ionicons } from '@expo/vector-icons'
+import { Ionicons } from '@expo/vector-icons';
 
 import TeacherList from '../pages/TeacherList';
 import Favorites from '../pages/Favorites';
 
 const { Navigator, Screen } = createBottomTabNavigator();
 
-function StudyTabs() {
+const StudyTabs: React.FC = () => {
   return (
     <Navigator
       tabBarOptions={{
@@ -42,13 +42,13 @@ function StudyTabs() {
         component={TeacherList}
         options={{
           tabBarLabel: 'Proffys',
-          tabBarIcon: 
-            ({ color, size, focused }) => 
-              <Ionicons
-                name="ios-easel"
-                size={size}
-                color={focused ? '#8257e5' : color}
-              />
+          tabBarIcon: ({ color, size, focused }) => (
+            <Ionicons
+              name="ios-easel"
+              size={size}
+              color={focused ? '#8257e5' : color}
+            />
+          ),
         }}
       />
       <Screen
@@ -56,17 +56,17 @@ function StudyTabs() {
         component={Favorites}
         options={{
           tabBarLabel: 'Favoritos',
-          tabBarIcon: 
-            ({ color, size, focused }) => 
-              <Ionicons 
-                name="ios-heart-empty"
-                size={size}
-                color={focused ? '#8257e5' : color}
-              />
+          tabBarIcon: ({ color, size, focused }) => (
+            <Ionicons
+              name="ios-heart-empty"
+              size={size}
+              color={focused ? '#8257e5' : color}
+            />
+          ),
         }}
       />
     </Navigator>
-  )
-}
+  );
+};
 
 export default StudyTabs;

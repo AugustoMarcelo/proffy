@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     paddingTop: 40,
     borderBottomWidth: 1,
     borderBottomColor: '#6842C2',
-    borderStyle: 'solid'
+    borderStyle: 'solid',
   },
 
   pageModeText: {
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     lineHeight: 32,
     maxWidth: 160,
     marginVertical: 40,
-  }
+  },
 });
 
 export default styles;

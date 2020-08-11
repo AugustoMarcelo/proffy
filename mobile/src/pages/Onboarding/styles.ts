@@ -18,9 +18,7 @@ const styles = StyleSheet.create({
 
   slideIcon: {
     position: 'absolute',
-    transform: [
-      { translateY: 20 }
-    ]
+    transform: [{ translateY: 20 }],
   },
 
   content: {
