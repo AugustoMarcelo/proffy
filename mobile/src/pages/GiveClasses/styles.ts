@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 16,
     fontFamily: 'Archivo_700Bold',
-  }
+  },
 });
 
 export default styles;

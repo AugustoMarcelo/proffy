@@ -1,15 +1,22 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react';
-import { View, TextInput, TextInputProps, Text, StyleProp, ViewStyle } from 'react-native';
+import {
+  View,
+  TextInput,
+  TextInputProps,
+  Text,
+  StyleProp,
+  ViewStyle,
+} from 'react-native';
 import { useField } from '@unform/core';
 import { Feather } from '@expo/vector-icons';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 import styles from './styles';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 
 interface InputProps extends TextInputProps {
   name: string;
   label?: string;
-  containerStyle?: StyleProp<ViewStyle>,
+  containerStyle?: StyleProp<ViewStyle>;
 }
 
 interface InputValueReference {
@@ -63,17 +70,37 @@ const InputPassword: React.FC<InputProps> = ({
   }, []);
 
   return (
-    <View style={[styles.container, containerStyle, isFocused || isFilled ? { paddingVertical: 8 } : { paddingVertical: 20 } ]}>
-      {label && <Text style={[styles.label, isFocused || isFilled ? styles.labelFloating : {}]}>{label}</Text>}
+    <View
+      style={[
+        styles.container,
+        containerStyle,
+        isFocused || isFilled
+          ? { paddingVertical: 8 }
+          : { paddingVertical: 20 },
+      ]}
+    >
+      {label && (
+        <Text
+          style={[
+            styles.label,
+            isFocused || isFilled ? styles.labelFloating : {},
+          ]}
+        >
+          {label}
+        </Text>
+      )}
       {isFocused && <View style={styles.borderOnFocus} />}
       <TextInput
         ref={inputElementRef}
         defaultValue={defaultValue}
-        style={[styles.input, isFocused || isFilled ? { alignSelf: 'flex-end' } : {}]}
+        style={[
+          styles.input,
+          isFocused || isFilled ? { alignSelf: 'flex-end' } : {},
+        ]}
         onFocus={handleInputFocus}
         onBlur={handleInputBlur}
         secureTextEntry={hidePassword}
-        onChangeText={value => inputValueRef.current.value = value}
+        onChangeText={value => (inputValueRef.current.value = value)}
         {...rest}
       />
       <TouchableOpacity onPress={handleToggleShowPassword}>
@@ -82,14 +109,12 @@ const InputPassword: React.FC<InputProps> = ({
           size={20}
           color={isFocused ? '#8257E5' : '#9C98A6'}
           style={{
-            transform: [
-              { rotateX: '190deg' },
-            ]
+            transform: [{ rotateX: '190deg' }],
           }}
         />
       </TouchableOpacity>
     </View>
   );
-}
+};
 
 export default InputPassword;

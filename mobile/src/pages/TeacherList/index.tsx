@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, ScrollView, Text, TextInput } from 'react-native';
+import { View, ScrollView, Text } from 'react-native';
 import { BorderlessButton, RectButton } from 'react-native-gesture-handler';
 import { Feather } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-community/async-storage';
@@ -12,34 +12,36 @@ import TeacherItem, { Teacher } from '../../components/TeacherItem';
 
 import styles, { dropdownStyles } from './styles';
 
-function TeacherList() {
+const TeacherList: React.FC = () => {
   const [isFiltersVisible, setIsFiltersVisible] = useState(false);
 
   const [subjects] = useState([
-    {label: "Matemática", value:"Matemática"},
-    {label: "Português", value: "Português"},
-    {label: "Ciências", value: "Ciências"},
-    {label: "Geografia", value: "Geografia"},
-    {label: "História", value: "História"},
-    {label: "Física", value: "Física"},
+    { label: 'Matemática', value: 'Matemática' },
+    { label: 'Português', value: 'Português' },
+    { label: 'Ciências', value: 'Ciências' },
+    { label: 'Geografia', value: 'Geografia' },
+    { label: 'História', value: 'História' },
+    { label: 'Física', value: 'Física' },
   ]);
 
   const [week_days] = useState([
-    {label: "Domingo", value: "0"},
-    {label: "Segunda", value:"1"},
-    {label: "Terça", value: "2"},
-    {label: "Quarta", value: "3"},
-    {label: "Quinta", value: "4"},
-    {label: "Sexta", value: "5"},
-    {label: "Sábado", value: "6"},
+    { label: 'Domingo', value: '0' },
+    { label: 'Segunda', value: '1' },
+    { label: 'Terça', value: '2' },
+    { label: 'Quarta', value: '3' },
+    { label: 'Quinta', value: '4' },
+    { label: 'Sexta', value: '5' },
+    { label: 'Sábado', value: '6' },
   ]);
 
-  const [times] = useState(Array.from({ length: 24 }).map((_, i) => {
-    return {
-      label: i === 1 ? `${i} hora` : `${i} horas`,
-      value: `${i}:`.padEnd(i > 9 ? 5 : 4, '0'),
-    }
-  }));
+  const [times] = useState(
+    Array.from({ length: 24 }).map((_, i) => {
+      return {
+        label: i === 1 ? `${i} hora` : `${i} horas`,
+        value: `${i}:`.padEnd(i > 9 ? 5 : 4, '0'),
+      };
+    }),
+  );
 
   const [teachers, setTeachers] = useState([]);
   const [favorites, setFavorites] = useState<number[]>([]);
@@ -52,7 +54,7 @@ function TeacherList() {
       if (response) {
         const favoritedTeachers = JSON.parse(response);
         const favoritedTeachersIds = favoritedTeachers.map(
-          (teacher: Teacher) => teacher.id
+          (teacher: Teacher) => teacher.id,
         );
 
         setFavorites(favoritedTeachersIds);
@@ -71,7 +73,7 @@ function TeacherList() {
         subject,
         week_day,
         time,
-      }
+      },
     });
 
     setIsFiltersVisible(false);
@@ -82,11 +84,11 @@ function TeacherList() {
     <View style={styles.container}>
       <PageHeader
         title="Proffys disponíveis"
-        headerRight={(
+        headerRight={
           <BorderlessButton onPress={toggleFiltersVisible}>
             <Feather name="filter" size={20} color="#fff" />
           </BorderlessButton>
-        )}
+        }
       >
         {isFiltersVisible && (
           <View style={styles.searchForm}>
@@ -112,7 +114,7 @@ function TeacherList() {
                   paddingVertical: 13,
                 }}
                 activeLabelStyle={{
-                  fontFamily: 'Poppins_600SemiBold'
+                  fontFamily: 'Poppins_600SemiBold',
                 }}
                 activeItemStyle={{
                   borderLeftWidth: 2,
@@ -124,7 +126,7 @@ function TeacherList() {
                 onChangeItem={item => setSubject(item.value)}
               />
             </View>
-            
+
             <View style={[styles.inputGroup, { position: 'relative' }]}>
               <View style={styles.inputBlock}>
                 <Text style={styles.label}>Dia da semana</Text>
@@ -149,7 +151,7 @@ function TeacherList() {
                     paddingVertical: 13,
                   }}
                   activeLabelStyle={{
-                    fontFamily: 'Poppins_600SemiBold'
+                    fontFamily: 'Poppins_600SemiBold',
                   }}
                   activeItemStyle={{
                     borderLeftWidth: 2,
@@ -177,7 +179,7 @@ function TeacherList() {
                   labelStyle={dropdownStyles.label}
                   itemStyle={dropdownStyles.item}
                   activeLabelStyle={{
-                    fontFamily: 'Poppins_600SemiBold'
+                    fontFamily: 'Poppins_600SemiBold',
                   }}
                   activeItemStyle={dropdownStyles.activeItem}
                   onChangeItem={item => setTime(item.value)}
@@ -185,7 +187,10 @@ function TeacherList() {
               </View>
             </View>
 
-            <RectButton onPress={handleFiltersSubmit} style={styles.submitButton}>
+            <RectButton
+              onPress={handleFiltersSubmit}
+              style={styles.submitButton}
+            >
               <Text style={styles.submitButtonText}>Filtrar</Text>
             </RectButton>
           </View>
@@ -199,17 +204,16 @@ function TeacherList() {
           paddingBottom: 16,
         }}
       >
-        {teachers.map(
-          (teacher: Teacher) => 
-            <TeacherItem 
-              key={teacher.id} 
-              teacher={teacher}
-              favorited={favorites.includes(teacher.id)}
-            />
-        )}
+        {teachers.map((teacher: Teacher) => (
+          <TeacherItem
+            key={teacher.id}
+            teacher={teacher}
+            favorited={favorites.includes(teacher.id)}
+          />
+        ))}
       </ScrollView>
     </View>
   );
-}
+};
 
 export default TeacherList;

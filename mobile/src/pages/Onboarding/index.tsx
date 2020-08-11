@@ -11,7 +11,7 @@ import slideGiveClassesIcon from '../../assets/images/icons/slideIconGiveClasses
 
 import styles from './styles';
 
-function Onboarding() {
+const Onboarding: React.FC = () => {
   const swipeRef = useRef<Swipe>(null);
   const { navigate } = useNavigation();
 
@@ -25,7 +25,7 @@ function Onboarding() {
 
   return (
     <Swipe
-      ref={swipeRef} 
+      ref={swipeRef}
       loop={false}
       dotStyle={{
         borderRadius: 1,
@@ -55,12 +55,12 @@ function Onboarding() {
           <Text style={styles.slideDescription}>
             Encontre vários professores para ensinar você
           </Text>
-          <TouchableOpacity 
-            onPress={goToNextSlide} 
+          <TouchableOpacity
+            onPress={goToNextSlide}
             style={styles.buttonNextSlide}
           >
             <Image source={nextIcon} />
-          </TouchableOpacity>  
+          </TouchableOpacity>
         </View>
       </View>
 
@@ -84,7 +84,7 @@ function Onboarding() {
         </View>
       </View>
     </Swipe>
-  )
-}
+  );
+};
 
 export default Onboarding;

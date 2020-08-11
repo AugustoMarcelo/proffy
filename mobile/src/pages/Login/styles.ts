@@ -17,9 +17,7 @@ const styles = StyleSheet.create({
 
   logoDescription: {
     position: 'absolute',
-    transform: [
-      { translateY: 20 }
-    ]
+    transform: [{ translateY: 20 }],
   },
 
   content: {
@@ -44,7 +42,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingBottom: 24,
   },
-  
+
   textLoginTitle: {
     fontFamily: 'Poppins_600SemiBold',
     fontSize: 24,
@@ -56,11 +54,11 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: '#8257E5',
   },
-  
+
   textForgotPassword: {
     fontFamily: 'Poppins_400Regular',
     fontSize: 12,
-    color: '#9C98A6'
+    color: '#9C98A6',
   },
 
   submitButton: {

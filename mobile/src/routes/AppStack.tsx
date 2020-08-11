@@ -10,7 +10,7 @@ import Login from '../pages/Login';
 
 const { Navigator, Screen } = createStackNavigator();
 
-function AppStack() {
+const AppStack: React.FC = () => {
   return (
     <NavigationContainer>
       <Navigator screenOptions={{ headerShown: false }}>
@@ -21,7 +21,7 @@ function AppStack() {
         <Screen name="Study" component={StudyTabs} />
       </Navigator>
     </NavigationContainer>
-  )
-}
+  );
+};
 
 export default AppStack;

@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: '#6A6180',
     flex: 1,
-  }
+  },
 });
 
 export default styles;

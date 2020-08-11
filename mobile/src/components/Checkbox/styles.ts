@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins_400Regular',
     fontSize: 12,
     color: '#9C98A6',
-  }
+  },
 });
 
 export default styles;

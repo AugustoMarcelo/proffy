@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 19,
   },
-  
+
   totalConnections: {
     fontFamily: 'Poppins_400Regular',
     color: '#d4c2ff',
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     lineHeight: 20,
     maxWidth: 140,
     marginTop: 40,
-  }
+  },
 });
 
 export default styles;

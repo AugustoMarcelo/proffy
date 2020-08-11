@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     borderColor: '#e6e6f0',
     borderRadius: 8,
     marginBottom: 16,
-    overflow: 'hidden'
+    overflow: 'hidden',
   },
 
   profile: {
@@ -102,8 +102,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Archivo_700Bold',
     fontSize: 16,
     marginLeft: 16,
-  }
-
+  },
 });
 
 export default styles;

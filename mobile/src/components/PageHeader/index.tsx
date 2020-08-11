@@ -14,9 +14,9 @@ interface PageHeaderProps {
 }
 
 const PageHeader: React.FC<PageHeaderProps> = ({
-  title, 
-  headerRight, 
-  children
+  title,
+  headerRight,
+  children,
 }) => {
   const { navigate } = useNavigation();
 
@@ -43,7 +43,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({
 
       {children}
     </View>
-  )
-}
+  );
+};
 
 export default PageHeader;
