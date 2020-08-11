@@ -74,22 +74,12 @@ The purpose of the application is to propose an environment where people can reg
   ```bash
     # Accessing mobile project
     cd mobile
-<<<<<<< HEAD
+
     # Change the IP in services/api.ts to connect with the back end
     cd services
     # Running
     yarn start
   ```
-=======
-
-    # Change the IP in services/api.ts to connect with the back end
-    cd services
-
-    # Running
-    yarn start
-  ```
-
->>>>>>> 4afab75cc3f01e93af051daeac46c5b7d9e1931b
 ---
 
 ## 📷 Previews
