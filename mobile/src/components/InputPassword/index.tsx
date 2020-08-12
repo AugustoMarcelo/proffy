@@ -1,17 +1,10 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react';
-import {
-  View,
-  TextInput,
-  TextInputProps,
-  Text,
-  StyleProp,
-  ViewStyle,
-} from 'react-native';
+import { TextInputProps, StyleProp, ViewStyle } from 'react-native';
 import { useField } from '@unform/core';
 import { Feather } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-import styles from './styles';
+import { Container, Label, Border, TextInput } from './styles';
 
 interface InputProps extends TextInputProps {
   name: string;
@@ -70,39 +63,27 @@ const InputPassword: React.FC<InputProps> = ({
   }, []);
 
   return (
-    <View
-      style={[
-        styles.container,
-        containerStyle,
-        isFocused || isFilled
-          ? { paddingVertical: 8 }
-          : { paddingVertical: 20 },
-      ]}
-    >
+    <Container style={containerStyle} isFocused={isFocused} isFilled={isFilled}>
       {label && (
-        <Text
-          style={[
-            styles.label,
-            isFocused || isFilled ? styles.labelFloating : {},
-          ]}
-        >
+        <Label isFocused={isFocused} isFilled={isFilled} isErrored={!!error}>
           {label}
-        </Text>
+        </Label>
       )}
-      {isFocused && <View style={styles.borderOnFocus} />}
+
+      {isFocused && <Border />}
+
       <TextInput
         ref={inputElementRef}
+        isFocused={isFocused}
+        isFilled={isFilled}
         defaultValue={defaultValue}
-        style={[
-          styles.input,
-          isFocused || isFilled ? { alignSelf: 'flex-end' } : {},
-        ]}
         onFocus={handleInputFocus}
         onBlur={handleInputBlur}
         secureTextEntry={hidePassword}
-        onChangeText={value => (inputValueRef.current.value = value)}
+        onChangeText={(value: string) => (inputValueRef.current.value = value)}
         {...rest}
       />
+
       <TouchableOpacity onPress={handleToggleShowPassword}>
         <Feather
           name={hidePassword ? 'eye' : 'eye-off'}
@@ -113,7 +94,7 @@ const InputPassword: React.FC<InputProps> = ({
           }}
         />
       </TouchableOpacity>
-    </View>
+    </Container>
   );
 };
 

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { RectButton } from 'react-native-gesture-handler';
-import { View, Image, Text, Linking } from 'react-native';
+import { Image, Linking } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 
 import api from '../../services/api';
@@ -9,7 +8,22 @@ import heartOutlineIcon from '../../assets/images/icons/heart-outline.png';
 import unfavoriteIcon from '../../assets/images/icons/unfavorite.png';
 import whatsappIcon from '../../assets/images/icons/whatsapp.png';
 
-import styles from './styles';
+import {
+  Container,
+  Profile,
+  Avatar,
+  ProfileInfo,
+  Name,
+  Subject,
+  Bio,
+  Footer,
+  Price,
+  PriceValue,
+  ButtonsContainer,
+  FavoriteButton,
+  ContactButton,
+  ContactButtonText,
+} from './styles';
 
 export interface Teacher {
   id: number;
@@ -63,46 +77,43 @@ const TeacherItem: React.FC<TeacherItemProps> = ({ teacher, favorited }) => {
   }
 
   return (
-    <View style={styles.container}>
-      <View style={styles.profile}>
-        <Image style={styles.avatar} source={{ uri: teacher.avatar }} />
+    <Container>
+      <Profile>
+        <Avatar source={{ uri: teacher.avatar }} />
 
-        <View style={styles.profileInfo}>
-          <Text style={styles.name}>{teacher.name}</Text>
-          <Text style={styles.subject}>{teacher.subject}</Text>
-        </View>
-      </View>
+        <ProfileInfo>
+          <Name>{teacher.name}</Name>
+          <Subject>{teacher.subject}</Subject>
+        </ProfileInfo>
+      </Profile>
 
-      <Text style={styles.bio}>{teacher.bio}</Text>
+      <Bio>{teacher.bio}</Bio>
 
-      <View style={styles.footer}>
-        <Text style={styles.price}>
+      <Footer>
+        <Price>
           Preço/Hora {'   '}
-          <Text style={styles.priceValue}>R$ {teacher.cost}</Text>
-        </Text>
+          <PriceValue>R$ {teacher.cost}</PriceValue>
+        </Price>
 
-        <View style={styles.buttonsContainer}>
-          <RectButton
+        <ButtonsContainer>
+          <FavoriteButton
             onPress={handleToggleFavorite}
-            style={[styles.favoriteButton, isFavorited ? styles.favorited : {}]}
+            isFavorite={isFavorited}
           >
             {isFavorited ? (
               <Image source={unfavoriteIcon} />
             ) : (
               <Image source={heartOutlineIcon} />
             )}
-          </RectButton>
+          </FavoriteButton>
 
-          <RectButton
-            onPress={handleLinkToWhatsapp}
-            style={styles.contactButton}
-          >
+          <ContactButton onPress={handleLinkToWhatsapp}>
             <Image source={whatsappIcon} />
-            <Text style={styles.contactButtonText}>Entrar em contato</Text>
-          </RectButton>
-        </View>
-      </View>
-    </View>
+            <ContactButtonText>Entrar em contato</ContactButtonText>
+          </ContactButton>
+        </ButtonsContainer>
+      </Footer>
+    </Container>
   );
 };
 

@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
 import {
-  View,
-  Text,
   KeyboardAvoidingView,
   Platform,
   ScrollView,
   Image,
 } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { Form } from '@unform/mobile';
 
 import Checkbox from '../../components/Checkbox';
 import Input from '../../components/Input';
@@ -17,11 +14,24 @@ import InputPassword from '../../components/InputPassword';
 import backgroundImg from '../../assets/images/background.png';
 import logoDescriptionImg from '../../assets/images/logoDescription.png';
 
-import styles from './styles';
+import {
+  Container,
+  Header,
+  LogoDescription,
+  Form,
+  ContentTop,
+  ContentMiddle,
+  ContentBottom,
+  LoginTitle,
+  CreateAccountText,
+  ForgotPasswordText,
+  SubmitButton,
+  SubmitButtonText,
+} from './styles';
 
 const Login: React.FC = () => {
   const [remember, setRemember] = useState(false);
-  const [hasError, setHasError] = useState(true);
+  const [hasError] = useState(true);
 
   function handleSubmit() {
     console.log(remember);
@@ -33,20 +43,20 @@ const Login: React.FC = () => {
       enabled
     >
       <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={styles.container}>
-          <View style={styles.header}>
+        <Container>
+          <Header>
             <Image source={backgroundImg} resizeMode="contain" />
-            <Image source={logoDescriptionImg} style={styles.logoDescription} />
-          </View>
+            <LogoDescription source={logoDescriptionImg} />
+          </Header>
 
-          <Form onSubmit={() => {}} style={styles.content}>
-            <View style={styles.contentTop}>
-              <Text style={styles.textLoginTitle}>Fazer login</Text>
+          <Form onSubmit={handleSubmit}>
+            <ContentTop>
+              <LoginTitle>Fazer login</LoginTitle>
               <TouchableOpacity>
-                <Text style={styles.textCreateAccount}>Criar uma conta</Text>
+                <CreateAccountText>Criar uma conta</CreateAccountText>
               </TouchableOpacity>
-            </View>
-            <View style={styles.contentMiddle}>
+            </ContentTop>
+            <ContentMiddle>
               <Input
                 name="email"
                 label="E-mail"
@@ -66,36 +76,26 @@ const Login: React.FC = () => {
                   borderBottomRightRadius: 8,
                 }}
               />
-            </View>
-            <View style={styles.contentBottom}>
+            </ContentMiddle>
+            <ContentBottom>
               <Checkbox
                 label="Lembrar-me"
                 value={remember}
                 onValueChange={setRemember}
               />
               <TouchableOpacity>
-                <Text style={styles.textForgotPassword}>
-                  Esqueci minha senha
-                </Text>
+                <ForgotPasswordText>Esqueci minha senha</ForgotPasswordText>
               </TouchableOpacity>
-            </View>
-            <TouchableOpacity
+            </ContentBottom>
+            <SubmitButton
               onPress={handleSubmit}
-              style={[hasError ? styles.buttonDisabled : styles.submitButton]}
-              disabled={hasError}
+              isDisabled={hasError}
+              enabled={!hasError}
             >
-              <Text
-                style={[
-                  hasError
-                    ? styles.buttonTextDisabled
-                    : styles.submitButtonText,
-                ]}
-              >
-                Entrar
-              </Text>
-            </TouchableOpacity>
+              <SubmitButtonText isDisabled={hasError}>Entrar</SubmitButtonText>
+            </SubmitButton>
           </Form>
-        </View>
+        </Container>
       </ScrollView>
     </KeyboardAvoidingView>
   );

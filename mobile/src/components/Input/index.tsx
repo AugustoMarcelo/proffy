@@ -1,15 +1,8 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
-import {
-  View,
-  TextInput,
-  TextInputProps,
-  Text,
-  StyleProp,
-  ViewStyle,
-} from 'react-native';
+import { TextInputProps, StyleProp, ViewStyle } from 'react-native';
 import { useField } from '@unform/core';
 
-import styles from './styles';
+import { Container, Label, Border, TextInput } from './styles';
 
 interface InputProps extends TextInputProps {
   name: string;
@@ -62,36 +55,22 @@ const Input: React.FC<InputProps> = ({
   }, []);
 
   return (
-    <View
-      style={[
-        styles.container,
-        containerStyle,
-        isFocused || isFilled
-          ? { paddingVertical: 8 }
-          : { paddingVertical: 20 },
-      ]}
-    >
+    <Container style={containerStyle} isFocused={isFocused} isFilled={isFilled}>
       {label && (
-        <Text
-          style={[
-            styles.label,
-            isFocused || isFilled ? styles.labelFloating : {},
-          ]}
-        >
+        <Label isFocused={isFocused} isFilled={isFilled} isErrored={!!error}>
           {label}
-        </Text>
+        </Label>
       )}
-      {isFocused && <View style={styles.borderOnFocus} />}
+      {isFocused && <Border />}
       <TextInput
         ref={inputElementRef}
         defaultValue={defaultValue}
-        style={styles.input}
         onFocus={handleInputFocus}
         onBlur={handleInputBlur}
-        onChangeText={value => (inputValueRef.current.value = value)}
+        onChangeText={(value: string) => (inputValueRef.current.value = value)}
         {...rest}
       />
-    </View>
+    </Container>
   );
 };
 

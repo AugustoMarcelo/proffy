@@ -1,48 +1,63 @@
-import { StyleSheet } from 'react-native';
+import styled, { css } from 'styled-components/native';
 
-const styles = StyleSheet.create({
-  container: {
-    position: 'relative',
-    height: 64,
-    backgroundColor: '#fafafc',
-    borderWidth: 1,
-    borderStyle: 'solid',
-    borderColor: '#e6e6f0',
-    borderTopLeftRadius: 8,
-    borderTopRightRadius: 8,
-    paddingHorizontal: 24,
-    justifyContent: 'flex-end',
-  },
+interface ContainerProps {
+  isFocused: boolean;
+  isFilled: boolean;
+  isErrored: boolean;
+}
 
-  label: {
-    position: 'absolute',
-    fontFamily: 'Poppins_400Regular',
-    color: '#9C98A6',
-    fontSize: 14,
-    top: 20,
-    left: 24,
-  },
+export const Container = styled.View<ContainerProps>`
+  position: relative;
+  height: 64px;
+  background-color: #fafafc;
+  border-width: 1px;
+  border-color: #e6e6f0;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding: 20px 24px;
+  justify-content: flex-end;
 
-  labelFloating: {
-    top: 10,
-    fontSize: 10,
-  },
+  ${({ isFocused, isFilled }) =>
+    (isFocused || isFilled) &&
+    css`
+      padding: 8px 24px;
+    `}
+`;
 
-  borderOnFocus: {
-    position: 'absolute',
-    width: 2,
-    height: 40,
-    backgroundColor: '#8257E5',
-    left: -1,
-    top: 12,
-    borderRadius: 5,
-  },
+export const Label = styled.Text<ContainerProps>`
+  position: absolute;
+  font-family: 'Poppins_400Regular';
+  color: #9c98a6;
+  font-size: 14px;
+  top: 20px;
+  left: 24px;
 
-  input: {
-    fontFamily: 'Poppins_400Regular',
-    fontSize: 14,
-    color: '#6A6180',
-  }
-});
+  ${({ isFocused, isFilled }) =>
+    (isFocused || isFilled) &&
+    css`
+      top: 10px;
+      font-size: 10px;
+    `}
 
-export default styles;
+  ${({ isErrored }) =>
+    isErrored &&
+    css`
+      color: #e83f5b;
+    `}
+`;
+
+export const Border = styled.View`
+  position: absolute;
+  width: 2px;
+  height: 40px;
+  background-color: #8257e5;
+  left: -1px;
+  top: 12px;
+  border-radius: 5px;
+`;
+
+export const TextInput = styled.TextInput`
+  font-family: 'Poppins_400Regular';
+  font-size: 14px;
+  color: #6a6180;
+`;

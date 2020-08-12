@@ -1,16 +1,27 @@
 import React, { useState } from 'react';
-import { View, ScrollView, Text } from 'react-native';
-import { BorderlessButton, RectButton } from 'react-native-gesture-handler';
+import { View, YellowBox } from 'react-native';
+import { BorderlessButton } from 'react-native-gesture-handler';
 import { Feather } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-community/async-storage';
-import DropDownPicker from 'react-native-dropdown-picker';
 
 import api from '../../services/api';
 
 import PageHeader from '../../components/PageHeader';
 import TeacherItem, { Teacher } from '../../components/TeacherItem';
 
-import styles, { dropdownStyles } from './styles';
+import {
+  Container,
+  TeacherListScroll,
+  SearchForm,
+  Label,
+  InputGroup,
+  InputBlock,
+  DropDown,
+  SubmitButton,
+  SubmitButtonText,
+} from './styles';
+
+YellowBox.ignoreWarnings(['DropDownPicker']);
 
 const TeacherList: React.FC = () => {
   const [isFiltersVisible, setIsFiltersVisible] = useState(false);
@@ -81,7 +92,7 @@ const TeacherList: React.FC = () => {
   }
 
   return (
-    <View style={styles.container}>
+    <Container>
       <PageHeader
         title="Proffys disponíveis"
         headerRight={
@@ -91,119 +102,58 @@ const TeacherList: React.FC = () => {
         }
       >
         {isFiltersVisible && (
-          <View style={styles.searchForm}>
-            <Text style={styles.label}>Matéria</Text>
+          <SearchForm>
+            <Label>Matéria</Label>
             <View style={{ position: 'relative' }}>
-              <DropDownPicker
+              <DropDown
                 zIndex={5000}
                 placeholder="Selecione"
                 items={subjects}
-                placeholderStyle={{ color: '#C1BCCC' }}
                 defaultValue={subject}
-                containerStyle={styles.dropdown}
-                dropDownStyle={dropdownStyles.box}
                 dropDownMaxHeight={200}
-                arrowColor="#9C98A6"
-                labelStyle={{
-                  fontFamily: 'Poppins_400Regular',
-                  color: '#6A6180',
-                }}
-                itemStyle={{
-                  justifyContent: 'flex-start',
-                  paddingHorizontal: 12,
-                  paddingVertical: 13,
-                }}
-                activeLabelStyle={{
-                  fontFamily: 'Poppins_600SemiBold',
-                }}
-                activeItemStyle={{
-                  borderLeftWidth: 2,
-                  borderStyle: 'solid',
-                  borderColor: '#8257E5',
-                  backgroundColor: '#EBEBF5',
-                  paddingLeft: 10,
-                }}
-                onChangeItem={item => setSubject(item.value)}
+                onChangeItem={(item: { value: string }) =>
+                  setSubject(item.value)
+                }
               />
             </View>
 
-            <View style={[styles.inputGroup, { position: 'relative' }]}>
-              <View style={styles.inputBlock}>
-                <Text style={styles.label}>Dia da semana</Text>
-                <DropDownPicker
+            <InputGroup style={{ position: 'relative' }}>
+              <InputBlock>
+                <Label>Dia da semana</Label>
+                <DropDown
                   zIndex={4000}
-                  style={{ position: 'relative' }}
                   placeholder="Selecione"
                   items={week_days}
-                  placeholderStyle={{ color: '#C1BCCC' }}
                   defaultValue={week_day}
-                  containerStyle={styles.dropdown}
-                  dropDownStyle={dropdownStyles.box}
                   dropDownMaxHeight={100}
-                  arrowColor="#9C98A6"
-                  labelStyle={{
-                    fontFamily: 'Poppins_400Regular',
-                    color: '#6A6180',
-                  }}
-                  itemStyle={{
-                    justifyContent: 'flex-start',
-                    paddingHorizontal: 12,
-                    paddingVertical: 13,
-                  }}
-                  activeLabelStyle={{
-                    fontFamily: 'Poppins_600SemiBold',
-                  }}
-                  activeItemStyle={{
-                    borderLeftWidth: 2,
-                    borderStyle: 'solid',
-                    borderColor: '#8257E5',
-                    backgroundColor: '#EBEBF5',
-                    paddingLeft: 10,
-                  }}
-                  onChangeItem={item => setWeekDay(item.value)}
+                  onChangeItem={(item: { value: string }) =>
+                    setWeekDay(item.value)
+                  }
                 />
-              </View>
-              <View style={styles.inputBlock}>
-                <Text style={styles.label}>Horário</Text>
-                <DropDownPicker
+              </InputBlock>
+              <InputBlock>
+                <Label>Horário</Label>
+                <DropDown
                   zIndex={3000}
-                  style={{ position: 'relative' }}
                   placeholder="Selecione"
                   items={times}
-                  placeholderStyle={{ color: '#C1BCCC' }}
                   defaultValue={time}
-                  containerStyle={styles.dropdown}
-                  dropDownStyle={dropdownStyles.box}
                   dropDownMaxHeight={100}
-                  arrowColor="#9C98A6"
-                  labelStyle={dropdownStyles.label}
-                  itemStyle={dropdownStyles.item}
-                  activeLabelStyle={{
-                    fontFamily: 'Poppins_600SemiBold',
-                  }}
-                  activeItemStyle={dropdownStyles.activeItem}
-                  onChangeItem={item => setTime(item.value)}
+                  onChangeItem={(item: { value: string }) =>
+                    setTime(item.value)
+                  }
                 />
-              </View>
-            </View>
+              </InputBlock>
+            </InputGroup>
 
-            <RectButton
-              onPress={handleFiltersSubmit}
-              style={styles.submitButton}
-            >
-              <Text style={styles.submitButtonText}>Filtrar</Text>
-            </RectButton>
-          </View>
+            <SubmitButton onPress={handleFiltersSubmit}>
+              <SubmitButtonText>Filtrar</SubmitButtonText>
+            </SubmitButton>
+          </SearchForm>
         )}
       </PageHeader>
 
-      <ScrollView
-        style={styles.teacherList}
-        contentContainerStyle={{
-          paddingHorizontal: 16,
-          paddingBottom: 16,
-        }}
-      >
+      <TeacherListScroll>
         {teachers.map((teacher: Teacher) => (
           <TeacherItem
             key={teacher.id}
@@ -211,8 +161,8 @@ const TeacherList: React.FC = () => {
             favorited={favorites.includes(teacher.id)}
           />
         ))}
-      </ScrollView>
-    </View>
+      </TeacherListScroll>
+    </Container>
   );
 };
 

@@ -1,51 +1,46 @@
-import { StyleSheet } from 'react-native';
+import styled from 'styled-components/native';
 
-const styles = StyleSheet.create({
-  container: {
-    padding: 32,
-    paddingTop: 101,
-    backgroundColor: '#8257e5',
-    position: 'relative',
-  },
+export const Container = styled.View`
+  padding: 32px;
+  padding-top: 101px;
+  background-color: #8257e5;
+  position: relative;
+`;
 
-  topBar: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    backgroundColor: '#774DD6',
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    height: 101,
-    paddingHorizontal: 32,
-    paddingTop: 40,
-    borderBottomWidth: 1,
-    borderBottomColor: '#6842C2',
-    borderStyle: 'solid',
-  },
+export const TopBar = styled.View`
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #774dd6;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 101px;
+  padding: 0 32px;
+  padding-top: 40px;
+  border-bottom-width: 1px;
+  border-bottom-color: #6842c2;
+`;
 
-  pageModeText: {
-    fontFamily: 'Archivo_400Regular',
-    color: '#D4C2FF',
-    fontSize: 14,
-    lineHeight: 15,
-  },
+export const PageTitle = styled.Text`
+  font-family: 'Archivo_400Regular';
+  color: #d4c2ff;
+  font-size: 14px;
+  line-height: 15px;
+`;
 
-  header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
+export const Header = styled.View`
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+`;
 
-  title: {
-    fontFamily: 'Archivo_700Bold',
-    color: '#fff',
-    fontSize: 24,
-    lineHeight: 32,
-    maxWidth: 160,
-    marginVertical: 40,
-  },
-});
-
-export default styles;
+export const Subtitle = styled.Text`
+  font-family: 'Archivo_700Bold';
+  color: #fff;
+  font-size: 24px;
+  line-height: 32px;
+  max-width: 160px;
+  margin: 40px 0;
+`;
