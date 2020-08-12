@@ -1,95 +1,92 @@
-import { StyleSheet } from 'react-native';
+import styled, { css } from 'styled-components/native';
+import { RectButton } from 'react-native-gesture-handler';
+import { Form as Unform } from '@unform/mobile';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#E5E5E5',
-  },
+interface ButtonProps {
+  isDisabled: boolean;
+}
 
-  header: {
-    width: '100%',
-    height: 380,
-    backgroundColor: '#8257E5',
-    alignItems: 'center',
-    justifyContent: 'center',
-    position: 'relative',
-  },
+export const Container = styled.View`
+  flex: 1;
+  background-color: #e5e5e5;
+`;
 
-  logoDescription: {
-    position: 'absolute',
-    transform: [{ translateY: 20 }],
-  },
+export const Header = styled.View`
+  width: 100%;
+  height: 380px;
+  background-color: #8257e5;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+`;
 
-  content: {
-    paddingHorizontal: 32,
-    paddingTop: 56,
-    paddingBottom: 64,
-  },
+export const LogoDescription = styled.Image`
+  position: absolute;
+  transform: translateY(20px);
+`;
 
-  contentTop: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
+export const Form = styled(Unform)`
+  padding: 56px 32px 64px;
+`;
 
-  contentMiddle: {
-    paddingVertical: 24,
-  },
+export const ContentTop = styled.View`
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+`;
 
-  contentBottom: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingBottom: 24,
-  },
+export const ContentMiddle = styled.View`
+  padding: 24px 0;
+`;
 
-  textLoginTitle: {
-    fontFamily: 'Poppins_600SemiBold',
-    fontSize: 24,
-    color: '#32264D',
-  },
+export const ContentBottom = styled.View`
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 24px;
+`;
 
-  textCreateAccount: {
-    fontFamily: 'Poppins_400Regular',
-    fontSize: 12,
-    color: '#8257E5',
-  },
+export const LoginTitle = styled.Text`
+  font-family: 'Poppins_600SemiBold';
+  font-size: 24px;
+  color: #32264d;
+`;
 
-  textForgotPassword: {
-    fontFamily: 'Poppins_400Regular',
-    fontSize: 12,
-    color: '#9C98A6',
-  },
+export const CreateAccountText = styled.Text`
+  font-family: 'Poppins_400Regular';
+  font-size: 12px;
+  color: #8257e5;
+`;
 
-  submitButton: {
-    backgroundColor: '#04d361',
-    flexDirection: 'row',
-    height: 56,
-    borderRadius: 8,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
+export const ForgotPasswordText = styled.Text`
+  font-family: 'Poppins_400Regular';
+  font-size: 12px;
+  color: #9c98a6;
+`;
 
-  submitButtonText: {
-    color: '#fff',
-    fontFamily: 'Archivo_600SemiBold',
-    fontSize: 16,
-  },
+export const SubmitButton = styled(RectButton)<ButtonProps>`
+  background-color: #04d361;
+  flex-direction: row;
+  height: 56px;
+  border-radius: 8px;
+  justify-content: center;
+  align-items: center;
 
-  buttonDisabled: {
-    backgroundColor: '#DCDCE5',
-    flexDirection: 'row',
-    height: 56,
-    borderRadius: 8,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
+  ${({ isDisabled }) =>
+    isDisabled &&
+    css`
+      background-color: #dcdce5;
+    `}
+`;
 
-  buttonTextDisabled: {
-    color: '#9C98A6',
-    fontFamily: 'Archivo_600SemiBold',
-    fontSize: 16,
-  },
-});
+export const SubmitButtonText = styled.Text<ButtonProps>`
+  color: #fff;
+  font-family: 'Archivo_600SemiBold';
+  font-size: 16px;
 
-export default styles;
+  ${({ isDisabled }) =>
+    isDisabled &&
+    css`
+      color: #9c98a6;
+    `};
+`;

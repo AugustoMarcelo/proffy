@@ -1,35 +1,36 @@
-import { StyleSheet } from 'react-native';
+import styled, { css } from 'styled-components/native';
 
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
+interface CheckboxProps {
+  isChecked: boolean;
+}
 
-  boxContainer: {
-    height: 24,
-    width: 24,
-    backgroundColor: '#fff',
-    borderWidth: 1,
-    borderStyle: 'solid',
-    borderColor: '#E6E6F0',
-    borderRadius: 8,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+export const Container = styled.TouchableOpacity`
+  flex-direction: row;
+  align-items: center;
+`;
 
-  activeBoxColor: {
-    backgroundColor: '#04D361',
-    borderColor: '#04D361',
-    borderWidth: 2,
-  },
+export const BoxContainer = styled.View<CheckboxProps>`
+  height: 24px;
+  width: 24px;
+  background-color: #fff;
+  border-width: 1px;
+  border-color: #e6e6f0;
+  border-radius: 8px;
+  align-items: center;
+  justify-content: center;
 
-  label: {
-    marginLeft: 12,
-    fontFamily: 'Poppins_400Regular',
-    fontSize: 12,
-    color: '#9C98A6',
-  },
-});
+  ${({ isChecked }) =>
+    isChecked &&
+    css`
+      background-color: #04d361;
+      border-color: #04d361;
+      border-width: 2px;
+    `}
+`;
 
-export default styles;
+export const Label = styled.Text`
+  margin-left: 12px;
+  font-family: 'Poppins_400Regular';
+  font-size: 12px;
+  color: #9c98a6;
+`;
