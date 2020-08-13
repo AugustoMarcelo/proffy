@@ -6,6 +6,7 @@ import {
   Image,
 } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
 
 import Checkbox from '../../components/Checkbox';
 import Input from '../../components/Input';
@@ -32,6 +33,7 @@ import {
 const Login: React.FC = () => {
   const [remember, setRemember] = useState(false);
   const [hasError] = useState(true);
+  const { navigate } = useNavigation();
 
   function handleSubmit() {
     console.log(remember);
@@ -52,7 +54,7 @@ const Login: React.FC = () => {
           <Form onSubmit={handleSubmit}>
             <ContentTop>
               <LoginTitle>Fazer login</LoginTitle>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={() => navigate('CreateAccount')}>
                 <CreateAccountText>Criar uma conta</CreateAccountText>
               </TouchableOpacity>
             </ContentTop>
