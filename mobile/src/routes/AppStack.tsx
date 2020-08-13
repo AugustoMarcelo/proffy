@@ -7,6 +7,8 @@ import GiveClasses from '../pages/GiveClasses';
 import StudyTabs from './StudyTabs';
 import Onboarding from '../pages/Onboarding';
 import Login from '../pages/Login';
+import CreateAccount from '../pages/CreateAccount';
+import CreatedAccountSuccess from '../pages/CreatedAccountSuccess';
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -16,6 +18,11 @@ const AppStack: React.FC = () => {
       <Navigator screenOptions={{ headerShown: false }}>
         <Screen name="Onboarding" component={Onboarding} />
         <Screen name="Login" component={Login} />
+        <Screen name="CreateAccount" component={CreateAccount} />
+        <Screen
+          name="CreatedAccountSuccess"
+          component={CreatedAccountSuccess}
+        />
         <Screen name="Landing" component={Landing} />
         <Screen name="GiveClasses" component={GiveClasses} />
         <Screen name="Study" component={StudyTabs} />
