@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import {
   KeyboardAvoidingView,
   Platform,
@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
+import { FormHandles } from '@unform/core';
 
 import Checkbox from '../../components/Checkbox';
 import Input from '../../components/Input';
@@ -31,12 +32,13 @@ import {
 } from './styles';
 
 const Login: React.FC = () => {
+  const formRef = useRef<FormHandles>(null);
   const [remember, setRemember] = useState(false);
-  const [hasError] = useState(true);
+  const [hasError] = useState(false);
   const { navigate } = useNavigation();
 
   function handleSubmit() {
-    console.log(remember);
+    navigate('Landing');
   }
 
   return (
@@ -44,14 +46,17 @@ const Login: React.FC = () => {
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
       enabled
     >
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ flexGrow: 1 }}
+      >
         <Container>
           <Header>
             <Image source={backgroundImg} resizeMode="contain" />
             <LogoDescription source={logoDescriptionImg} />
           </Header>
 
-          <Form onSubmit={handleSubmit}>
+          <Form ref={formRef} onSubmit={handleSubmit}>
             <ContentTop>
               <LoginTitle>Fazer login</LoginTitle>
               <TouchableOpacity onPress={() => navigate('CreateAccount')}>
@@ -65,6 +70,10 @@ const Login: React.FC = () => {
                 autoCapitalize="none"
                 keyboardType="email-address"
                 autoCompleteType="off"
+                containerStyle={{
+                  borderBottomLeftRadius: 0,
+                  borderBottomRightRadius: 0,
+                }}
               />
               <InputPassword
                 name="password"
@@ -74,8 +83,6 @@ const Login: React.FC = () => {
                   borderTopWidth: 0,
                   borderTopLeftRadius: 0,
                   borderTopRightRadius: 0,
-                  borderBottomLeftRadius: 8,
-                  borderBottomRightRadius: 8,
                 }}
               />
             </ContentMiddle>
@@ -85,12 +92,12 @@ const Login: React.FC = () => {
                 value={remember}
                 onValueChange={setRemember}
               />
-              <TouchableOpacity>
+              <TouchableOpacity onPress={() => navigate('ForgotPassword')}>
                 <ForgotPasswordText>Esqueci minha senha</ForgotPasswordText>
               </TouchableOpacity>
             </ContentBottom>
             <SubmitButton
-              onPress={handleSubmit}
+              onPress={() => formRef.current?.submitForm()}
               isDisabled={hasError}
               enabled={!hasError}
             >

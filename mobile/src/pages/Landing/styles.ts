@@ -1,66 +1,109 @@
-import { StyleSheet } from 'react-native';
+import styled, { css } from 'styled-components/native';
+import { RectButton } from 'react-native-gesture-handler';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#8257e5',
-    justifyContent: 'center',
-    padding: 40,
-  },
+interface ButtonProps {
+  isPrimary?: boolean;
+}
 
-  banner: {
-    width: '100%',
-    resizeMode: 'contain',
-  },
+export const Container = styled.View`
+  flex: 1;
+  background-color: #e5e5e5;
+`;
 
-  title: {
-    fontFamily: 'Poppins_400Regular',
-    color: '#fff',
-    fontSize: 20,
-    lineHeight: 30,
-    marginTop: 80,
-  },
+export const Header = styled.View`
+  height: 365px;
+  background-color: #8257e5;
+  padding: 62px 32px 0;
+`;
 
-  titleBold: {
-    fontFamily: 'Poppins_600SemiBold',
-  },
+export const Profile = styled.View`
+  flex-direction: row;
+  align-items: center;
+`;
 
-  buttonsContainer: {
-    flexDirection: 'row',
-    marginTop: 40,
-    justifyContent: 'space-between',
-  },
+export const Navigation = styled.View`
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 40px;
+`;
 
-  button: {
-    height: 150,
-    width: '48%',
-    borderRadius: 8,
-    padding: 24,
-    justifyContent: 'space-between',
-  },
+export const Avatar = styled.Image`
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+`;
 
-  buttonPrimary: {
-    backgroundColor: '#9871f5',
-  },
+export const Name = styled.Text`
+  font-family: 'Poppins_500Medium';
+  color: #d4c2ff;
+  font-size: 12px;
+  line-height: 22px;
+  margin-left: 16px;
+`;
 
-  buttonSecondary: {
-    backgroundColor: '#04d361',
-  },
+export const LogoutButton = styled.TouchableOpacity`
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 40px;
+  background-color: #774dd6;
+  border-radius: 8px;
+`;
 
-  buttonText: {
-    fontFamily: 'Archivo_700Bold',
-    color: '#fff',
-    fontSize: 19,
-  },
+export const Banner = styled.Image.attrs({
+  resizeMode: 'contain',
+})`
+  width: 100%;
+`;
 
-  totalConnections: {
-    fontFamily: 'Poppins_400Regular',
-    color: '#d4c2ff',
-    fontSize: 12,
-    lineHeight: 20,
-    maxWidth: 140,
-    marginTop: 40,
-  },
-});
+export const Content = styled.View`
+  padding: 42px 32px 0;
+`;
 
-export default styles;
+export const Title = styled.Text`
+  font-family: 'Poppins_400Regular';
+  color: #6a6180;
+  font-size: 20px;
+  line-height: 30px;
+`;
+
+export const TitleBold = styled.Text`
+  font-family: 'Poppins_600SemiBold';
+`;
+
+export const ButtonsContainer = styled.View`
+  flex-direction: row;
+  margin-top: 24px;
+  justify-content: space-between;
+`;
+
+export const Button = styled(RectButton)<ButtonProps>`
+  height: 150px;
+  width: 48%;
+  border-radius: 8px;
+  padding: 24px;
+  justify-content: space-between;
+  background-color: #04d361;
+
+  ${({ isPrimary }) =>
+    isPrimary &&
+    css`
+      background-color: #9871f5;
+    `};
+`;
+
+export const ButtonText = styled.Text`
+  font-family: 'Archivo_700Bold';
+  color: #fff;
+  font-size: 19px;
+`;
+
+export const TotalConnectionsText = styled.Text`
+  font-family: 'Poppins_400Regular';
+  color: #9c98a6;
+  font-size: 12px;
+  line-height: 20px;
+  max-width: 140px;
+  margin-top: 40px;
+`;
