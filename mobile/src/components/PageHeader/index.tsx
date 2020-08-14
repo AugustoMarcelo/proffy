@@ -10,11 +10,13 @@ import { Container, TopBar, Header, PageTitle, Subtitle } from './styles';
 
 interface PageHeaderProps {
   title: string;
+  pageTitle: string;
   headerRight?: ReactNode;
 }
 
 const PageHeader: React.FC<PageHeaderProps> = ({
   title,
+  pageTitle,
   headerRight,
   children,
 }) => {
@@ -31,7 +33,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({
           <Image source={backIcon} resizeMode="contain" />
         </BorderlessButton>
 
-        <PageTitle>Estudar</PageTitle>
+        <PageTitle>{pageTitle}</PageTitle>
 
         <Image source={logoImg} resizeMode="contain" />
       </TopBar>
