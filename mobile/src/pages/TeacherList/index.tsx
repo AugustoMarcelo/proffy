@@ -33,6 +33,7 @@ const TeacherList: React.FC = () => {
     { label: 'Geografia', value: 'Geografia' },
     { label: 'História', value: 'História' },
     { label: 'Física', value: 'Física' },
+    { label: 'Biologia', value: 'Biologia' },
   ]);
 
   const [week_days] = useState([
@@ -95,6 +96,7 @@ const TeacherList: React.FC = () => {
     <Container>
       <PageHeader
         title="Proffys disponíveis"
+        pageTitle="Estudar"
         headerRight={
           <BorderlessButton onPress={toggleFiltersVisible}>
             <Feather name="filter" size={20} color="#fff" />

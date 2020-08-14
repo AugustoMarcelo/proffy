@@ -26,7 +26,7 @@ const Favorites: React.FC = () => {
 
   return (
     <Container>
-      <PageHeader title="Meus Proffys favoritos" />
+      <PageHeader title="Meus Proffys favoritos" pageTitle="Estudar" />
 
       <TeacherList>
         {favorites.map((teacher: Teacher) => (
