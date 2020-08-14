@@ -48,6 +48,9 @@ The purpose of the application is to propose an environment where people can reg
   ```bash
     # Accessing web project
     cd web
+
+    # Download dependencies
+    yarn
     
     # Running web project
     yarn start
@@ -57,6 +60,9 @@ The purpose of the application is to propose an environment where people can reg
   ```bash
     # Accessing server project
     cd server
+
+    # Download dependencies
+    yarn
 
     # Run migrations to create the tables
     yarn knex:migrate
@@ -70,8 +76,13 @@ The purpose of the application is to propose an environment where people can reg
   ```bash
     # Accessing mobile project
     cd mobile
+
+    # Download dependencies
+    yarn
+
     # Change the IP in services/api.ts to connect with the back end
     cd services
+    
     # Running
     yarn start
   ```
