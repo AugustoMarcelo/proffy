@@ -134,4 +134,20 @@ The purpose of the application is to propose an environment where people can reg
   <img src="https://user-images.githubusercontent.com/11545976/89678321-5be34780-d8c5-11ea-8936-bb9ed6226b73.gif" width="200" />
 </h1>
 
+<<<<<<< HEAD
 >>>>>>> c076641... :camera_flash: added mobile preview; :pencil: updated instructions
+=======
+---
+
+## 🚧 Proffy 2.0
+
+ - [ ] Authentication
+   - [ ] Login/Logout
+ - [ ] Password recovery
+ - [ ] Profile management
+ - [ ] Splash Screen (Mobile)
+ - [ ] Pagination in the list of Proffys
+ - [ ] Display of available times in the list of Proffys
+ - [ ] Save favorite Proffys on the database
+ - [ ] Deploy
+>>>>>>> fe3a255... :construction: described next features to be implemented
