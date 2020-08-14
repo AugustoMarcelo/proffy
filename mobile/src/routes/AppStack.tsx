@@ -9,6 +9,8 @@ import Onboarding from '../pages/Onboarding';
 import Login from '../pages/Login';
 import CreateAccount from '../pages/CreateAccount';
 import CreatedAccountSuccess from '../pages/CreatedAccountSuccess';
+import ForgotPassword from '../pages/ForgotPassword';
+import ForgotPasswordSuccess from '../pages/ForgotPasswordSuccess';
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -22,6 +24,11 @@ const AppStack: React.FC = () => {
         <Screen
           name="CreatedAccountSuccess"
           component={CreatedAccountSuccess}
+        />
+        <Screen name="ForgotPassword" component={ForgotPassword} />
+        <Screen
+          name="ForgotPasswordSuccess"
+          component={ForgotPasswordSuccess}
         />
         <Screen name="Landing" component={Landing} />
         <Screen name="GiveClasses" component={GiveClasses} />
