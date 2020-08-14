@@ -35,11 +35,8 @@ The purpose of the application is to propose an environment where people can reg
     - Typescript
     - AsyncStorage
     - axios
-<<<<<<< HEAD
     - [react-native-swiper](https://github.com/leecade/react-native-swiper) (to create onboarding page)
     - [react-native-dropdown-picker](https://github.com/hossein-zare/react-native-dropdown-picker) (to make customizable dropdowns)
-=======
->>>>>>> c076641... :camera_flash: added mobile preview; :pencil: updated instructions
 
 ---
 
@@ -84,7 +81,6 @@ The purpose of the application is to propose an environment where people can reg
     # Accessing mobile project
     cd mobile
 
-<<<<<<< HEAD
     # Download dependencies
     yarn
 
@@ -94,15 +90,6 @@ The purpose of the application is to propose an environment where people can reg
     # Running
     yarn start
   ```
-=======
-    # Change the IP in services/api.ts to connect with the back end
-    cd services
-
-    # Running
-    yarn start
-  ```
-
->>>>>>> c076641... :camera_flash: added mobile preview; :pencil: updated instructions
 ---
 
 ## 📷 Previews
@@ -112,7 +99,6 @@ The purpose of the application is to propose an environment where people can reg
 
   ---
 
-<<<<<<< HEAD
   <img src="https://user-images.githubusercontent.com/11545976/89721743-a8a74b00-d9b7-11ea-9e44-7a053345f68c.gif" width="200" />
 </h1>
 
@@ -130,24 +116,3 @@ The purpose of the application is to propose an environment where people can reg
  - [ ] Display of available times in the list of Proffys
  - [ ] Save favorite Proffys on the database
  - [ ] Deploy
-=======
-  <img src="https://user-images.githubusercontent.com/11545976/89678321-5be34780-d8c5-11ea-8936-bb9ed6226b73.gif" width="200" />
-</h1>
-
-<<<<<<< HEAD
->>>>>>> c076641... :camera_flash: added mobile preview; :pencil: updated instructions
-=======
----
-
-## 🚧 Proffy 2.0
-
- - [ ] Authentication
-   - [ ] Login/Logout
- - [ ] Password recovery
- - [ ] Profile management
- - [x] Splash Screen (Mobile)
- - [ ] Pagination in the list of Proffys
- - [ ] Display of available times in the list of Proffys
- - [ ] Save favorite Proffys on the database
- - [ ] Deploy
->>>>>>> fe3a255... :construction: described next features to be implemented
