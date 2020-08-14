@@ -12,8 +12,7 @@ export const Container = styled.View<ContainerProps>`
   background-color: #fafafc;
   border-width: 1px;
   border-color: #e6e6f0;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
+  border-radius: 8px;
   padding: 20px 24px;
   flex-direction: row;
   align-items: center;

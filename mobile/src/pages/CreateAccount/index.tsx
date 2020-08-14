@@ -61,7 +61,15 @@ const CreateAccount: React.FC = () => {
             </Description>
             <Question>01. Quem é você?</Question>
             <Form onSubmit={handleSaveDataAndGoToNextPage}>
-              <Input name="name" label="Nome" autoCompleteType="off" />
+              <Input
+                name="name"
+                label="Nome"
+                autoCompleteType="off"
+                containerStyle={{
+                  borderBottomLeftRadius: 0,
+                  borderBottomRightRadius: 0,
+                }}
+              />
               <Input
                 name="lastname"
                 label="Sobrenome"
@@ -70,8 +78,6 @@ const CreateAccount: React.FC = () => {
                   borderTopWidth: 0,
                   borderTopLeftRadius: 0,
                   borderTopRightRadius: 0,
-                  borderBottomLeftRadius: 8,
-                  borderBottomRightRadius: 8,
                 }}
               />
               <NextButton
@@ -106,6 +112,10 @@ const CreateAccount: React.FC = () => {
                 label="E-mail"
                 autoCompleteType="off"
                 keyboardType="email-address"
+                containerStyle={{
+                  borderBottomLeftRadius: 0,
+                  borderBottomRightRadius: 0,
+                }}
               />
               <InputPassword
                 name="password"
@@ -115,8 +125,6 @@ const CreateAccount: React.FC = () => {
                   borderTopWidth: 0,
                   borderTopLeftRadius: 0,
                   borderTopRightRadius: 0,
-                  borderBottomLeftRadius: 8,
-                  borderBottomRightRadius: 8,
                 }}
               />
               <ConfirmButton

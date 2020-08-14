@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { View, Image, Text } from 'react-native';
+import { Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { RectButton } from 'react-native-gesture-handler';
+import { Feather } from '@expo/vector-icons';
 
 import api from '../../services/api';
 
@@ -10,7 +10,23 @@ import studyIcon from '../../assets/images/icons/study.png';
 import giveClassesIcon from '../../assets/images/icons/give-classes.png';
 import heartIcon from '../../assets/images/icons/heart.png';
 
-import styles from './styles';
+import {
+  Container,
+  Header,
+  Navigation,
+  Profile,
+  Avatar,
+  Name,
+  LogoutButton,
+  Banner,
+  Content,
+  Title,
+  TitleBold,
+  ButtonsContainer,
+  Button,
+  ButtonText,
+  TotalConnectionsText,
+} from './styles';
 
 const Landing: React.FC = () => {
   const { navigate } = useNavigation();
@@ -33,39 +49,45 @@ const Landing: React.FC = () => {
   }
 
   return (
-    <View style={styles.container}>
-      <Image source={landingImg} style={styles.banner} />
+    <Container>
+      <Header>
+        <Navigation>
+          <Profile>
+            <Avatar source={{ uri: 'https://github.com/augustomarcelo.png' }} />
+            <Name>Marcelo Augusto</Name>
+          </Profile>
+          <LogoutButton onPress={() => navigate('Login')}>
+            <Feather name="power" color="#D4C2FF" size={20} />
+          </LogoutButton>
+        </Navigation>
+        <Banner source={landingImg} />
+      </Header>
+      <Content>
+        <Title>
+          Seja bem-vindo, {'\n'}
+          <TitleBold>O que deseja fazer?</TitleBold>
+        </Title>
 
-      <Text style={styles.title}>
-        Seja bem-vindo, {'\n'}
-        <Text style={styles.titleBold}>O que deseja fazer?</Text>
-      </Text>
+        <ButtonsContainer>
+          <Button onPress={handleNavigateToStudyPages} isPrimary>
+            <Image source={studyIcon} />
 
-      <View style={styles.buttonsContainer}>
-        <RectButton
-          onPress={handleNavigateToStudyPages}
-          style={[styles.button, styles.buttonPrimary]}
-        >
-          <Image source={studyIcon} />
+            <ButtonText>Estudar</ButtonText>
+          </Button>
 
-          <Text style={styles.buttonText}>Estudar</Text>
-        </RectButton>
+          <Button onPress={handleNavigateToGiveClassesPage}>
+            <Image source={giveClassesIcon} />
 
-        <RectButton
-          onPress={handleNavigateToGiveClassesPage}
-          style={[styles.button, styles.buttonSecondary]}
-        >
-          <Image source={giveClassesIcon} />
+            <ButtonText>Dar aulas</ButtonText>
+          </Button>
+        </ButtonsContainer>
 
-          <Text style={styles.buttonText}>Dar aulas</Text>
-        </RectButton>
-      </View>
-
-      <Text style={styles.totalConnections}>
-        Total de {totalConnections} conexões já realizadas{' '}
-        <Image source={heartIcon} />
-      </Text>
-    </View>
+        <TotalConnectionsText>
+          Total de {totalConnections} conexões já realizadas{' '}
+          <Image source={heartIcon} />
+        </TotalConnectionsText>
+      </Content>
+    </Container>
   );
 };
 
