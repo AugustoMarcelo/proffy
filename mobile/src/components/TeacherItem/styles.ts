@@ -5,6 +5,10 @@ interface ButtonProps {
   isFavorite: boolean;
 }
 
+interface ScheduleProps {
+  unavailable?: boolean;
+}
+
 export const Container = styled.View`
   background-color: #fff;
   border-width: 1px;
@@ -52,23 +56,87 @@ export const Bio = styled.Text`
   color: #6a6180;
 `;
 
-export const Footer = styled.View`
-  background-color: #fafafc;
+export const Schedule = styled.View`
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  border-color: #e6e6f0;
   padding: 24px;
-  align-items: center;
   margin-top: 24px;
 `;
 
-export const Price = styled.Text`
+export const ScheduleHeader = styled.View`
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px 0 15px;
+`;
+
+export const ScheduleHeaderText = styled.Text`
+  font-family: 'Poppins_400Regular';
+  font-size: 10px;
+  line-height: 15px;
+  color: #9c98a6;
+`;
+
+export const ScheduleItem = styled.View<ScheduleProps>`
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 25px 10px 15px;
+  background-color: #fafafc;
+  border-width: 1px;
+  border-color: #e6e6f0;
+  border-radius: 8px;
+  margin-top: 8px;
+
+  ${({ unavailable }) => unavailable && `opacity: 0.4;`};
+`;
+
+export const ScheduleItemDay = styled.Text`
+  font-family: 'Archivo_700Bold';
+  font-size: 16px;
+  line-height: 21px;
+  color: #6a6180;
+`;
+
+export const Arrow = styled.Image`
+  opacity: 0.2;
+  margin-left: auto;
+  margin-right: 30px;
+`;
+
+export const ScheduleItemInterval = styled.Text`
+  font-family: 'Archivo_700Bold';
+  font-size: 16px;
+  line-height: 21px;
+  color: #6a6180;
+  width: 62px;
+`;
+
+export const Footer = styled.View`
+  background-color: #fafafc;
+  padding: 24px;
+`;
+
+export const Price = styled.View`
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+export const PriceLabel = styled.Text`
   font-family: 'Poppins_400Regular';
   color: #6a6180;
   font-size: 14px;
+  line-height: 24px;
+  align-self: flex-end;
 `;
 
 export const PriceValue = styled.Text`
   font-family: 'Archivo_700Bold';
   color: #8257e5;
   font-size: 16px;
+  line-height: 26px;
 `;
 
 export const ButtonsContainer = styled.View`
@@ -100,7 +168,6 @@ export const ContactButton = styled(RectButton)`
   border-radius: 8px;
   justify-content: center;
   align-items: center;
-  margin-right: 8px;
 `;
 
 export const ContactButtonText = styled.Text`
