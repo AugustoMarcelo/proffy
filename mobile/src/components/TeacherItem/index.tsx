@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Image, Linking } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 
 import api from '../../services/api';
+import formatValue from '../../utils/formatValue';
 
 import heartOutlineIcon from '../../assets/images/icons/heart-outline.png';
 import unfavoriteIcon from '../../assets/images/icons/unfavorite.png';
 import whatsappIcon from '../../assets/images/icons/whatsapp.png';
+import arrowIcon from '../../assets/images/icons/next.png';
 
 import {
   Container,
@@ -16,8 +18,16 @@ import {
   Name,
   Subject,
   Bio,
+  Schedule,
+  ScheduleHeader,
+  ScheduleHeaderText,
+  ScheduleItem,
+  ScheduleItemDay,
+  Arrow,
+  ScheduleItemInterval,
   Footer,
   Price,
+  PriceLabel,
   PriceValue,
   ButtonsContainer,
   FavoriteButton,
@@ -42,6 +52,10 @@ interface TeacherItemProps {
 
 const TeacherItem: React.FC<TeacherItemProps> = ({ teacher, favorited }) => {
   const [isFavorited, setIsFavorited] = useState(favorited);
+
+  const priceFormatted = useMemo(() => {
+    return formatValue(teacher.cost);
+  }, [teacher.cost]);
 
   function handleLinkToWhatsapp() {
     api.post('connections', {
@@ -89,10 +103,42 @@ const TeacherItem: React.FC<TeacherItemProps> = ({ teacher, favorited }) => {
 
       <Bio>{teacher.bio}</Bio>
 
+      <Schedule>
+        <ScheduleHeader>
+          <ScheduleHeaderText>Dia</ScheduleHeaderText>
+          <ScheduleHeaderText>Horário</ScheduleHeaderText>
+        </ScheduleHeader>
+        <ScheduleItem>
+          <ScheduleItemDay>Segunda</ScheduleItemDay>
+          <Arrow source={arrowIcon} />
+          <ScheduleItemInterval>8h - 18h</ScheduleItemInterval>
+        </ScheduleItem>
+        <ScheduleItem unavailable>
+          <ScheduleItemDay>Terça</ScheduleItemDay>
+          <Arrow source={arrowIcon} />
+          <ScheduleItemInterval>-</ScheduleItemInterval>
+        </ScheduleItem>
+        <ScheduleItem>
+          <ScheduleItemDay>Quarta</ScheduleItemDay>
+          <Arrow source={arrowIcon} />
+          <ScheduleItemInterval>8h - 18h</ScheduleItemInterval>
+        </ScheduleItem>
+        <ScheduleItem unavailable>
+          <ScheduleItemDay>Quinta</ScheduleItemDay>
+          <Arrow source={arrowIcon} />
+          <ScheduleItemInterval>-</ScheduleItemInterval>
+        </ScheduleItem>
+        <ScheduleItem>
+          <ScheduleItemDay>Sexta</ScheduleItemDay>
+          <Arrow source={arrowIcon} />
+          <ScheduleItemInterval>8h - 18h</ScheduleItemInterval>
+        </ScheduleItem>
+      </Schedule>
+
       <Footer>
         <Price>
-          Preço/Hora {'   '}
-          <PriceValue>R$ {teacher.cost}</PriceValue>
+          <PriceLabel>Preço da minha hora:</PriceLabel>
+          <PriceValue>{priceFormatted} reais</PriceValue>
         </Price>
 
         <ButtonsContainer>
