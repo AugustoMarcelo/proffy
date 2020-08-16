@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
+import { Image } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import { useFocusEffect } from '@react-navigation/native';
 
 import PageHeader from '../../components/PageHeader';
 import TeacherItem, { Teacher } from '../../components/TeacherItem';
 
-import { Container, TeacherList } from './styles';
+import favoriteEmoticon from '../../assets/images/icons/favoriteEmoticon.png';
+
+import { Container, TeacherList, HeaderRight, ProffysQuantity } from './styles';
 
 const Favorites: React.FC = () => {
   const [favorites, setFavorites] = useState([]);
@@ -20,13 +23,28 @@ const Favorites: React.FC = () => {
     });
   }
 
+  const proffysCount = useMemo(() => {
+    const count = favorites.length;
+
+    return count !== 1 ? `${count} proffys` : `${count} proffy`;
+  }, [favorites.length]);
+
   useFocusEffect(() => {
     loadFavorites();
   });
 
   return (
     <Container>
-      <PageHeader title="Meus Proffys favoritos" pageTitle="Estudar" />
+      <PageHeader
+        title="Meus Proffys favoritos"
+        pageTitle="Estudar"
+        headerRight={
+          <HeaderRight>
+            <Image source={favoriteEmoticon} width={18} />
+            <ProffysQuantity>{proffysCount}</ProffysQuantity>
+          </HeaderRight>
+        }
+      />
 
       <TeacherList>
         {favorites.map((teacher: Teacher) => (
