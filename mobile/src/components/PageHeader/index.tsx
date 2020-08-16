@@ -9,7 +9,7 @@ import logoImg from '../../assets/images/logo.png';
 import { Container, TopBar, Header, PageTitle, Subtitle } from './styles';
 
 interface PageHeaderProps {
-  title: string;
+  title?: string;
   pageTitle: string;
   headerRight?: ReactNode;
 }

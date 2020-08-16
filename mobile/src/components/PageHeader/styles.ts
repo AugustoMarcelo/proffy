@@ -32,15 +32,15 @@ export const PageTitle = styled.Text`
 
 export const Header = styled.View`
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
+  margin: 40px 0;
 `;
 
 export const Subtitle = styled.Text`
   font-family: 'Archivo_700Bold';
   color: #fff;
   font-size: 24px;
-  line-height: 32px;
+  line-height: 29px;
   max-width: 160px;
-  margin: 40px 0;
 `;
