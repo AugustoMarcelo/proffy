@@ -52,7 +52,7 @@ const Landing: React.FC = () => {
     <Container>
       <Header>
         <Navigation>
-          <Profile>
+          <Profile onPress={() => navigate('Profile')}>
             <Avatar source={{ uri: 'https://github.com/augustomarcelo.png' }} />
             <Name>Marcelo Augusto</Name>
           </Profile>

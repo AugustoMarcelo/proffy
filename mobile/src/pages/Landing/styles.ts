@@ -16,7 +16,7 @@ export const Header = styled.View`
   padding: 62px 32px 0;
 `;
 
-export const Profile = styled.View`
+export const Profile = styled.TouchableOpacity`
   flex-direction: row;
   align-items: center;
 `;
