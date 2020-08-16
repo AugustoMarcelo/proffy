@@ -7,6 +7,37 @@ export const Container = styled.View`
   background-color: #f0f0f7;
 `;
 
+export const HeaderRight = styled.View`
+  flex-direction: row;
+  align-items: center;
+`;
+
+export const ProffysQuantity = styled.Text`
+  font-family: 'Poppins_400Regular';
+  color: #d4c2ff;
+  font-size: 12px;
+  line-height: 18px;
+  margin-top: 5px;
+  margin-left: 8px;
+`;
+
+export const FilterContainer = styled.TouchableOpacity`
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 18px;
+  border-bottom-width: 1px;
+  border-color: #9871f580;
+  margin-bottom: 48px;
+`;
+
+export const FilterText = styled.Text`
+  font-family: 'Archivo_400Regular';
+  font-size: 16px;
+  line-height: 19px;
+  color: #d4c2ff;
+`;
+
 export const TeacherListScroll = styled.ScrollView.attrs({
   contentContainerStyle: {
     paddingHorizontal: 16,
@@ -17,6 +48,7 @@ export const TeacherListScroll = styled.ScrollView.attrs({
 `;
 
 export const SearchForm = styled.View`
+  margin-top: -32px;
   margin-bottom: 24px;
 `;
 
@@ -65,7 +97,12 @@ export const DropDown = styled(DropDownPicker).attrs({
   },
   placeholderStyle: { color: '#C1BCCC' },
   arrowColor: '#9C98A6',
-})``;
+})`
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+`;
 
 export const SubmitButton = styled(RectButton)`
   background-color: #04d361;

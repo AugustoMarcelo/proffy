@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { View, YellowBox } from 'react-native';
-import { BorderlessButton } from 'react-native-gesture-handler';
-import { Feather } from '@expo/vector-icons';
+import { View, Image, YellowBox } from 'react-native';
+import { Feather, Ionicons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-community/async-storage';
 
 import api from '../../services/api';
@@ -9,8 +8,14 @@ import api from '../../services/api';
 import PageHeader from '../../components/PageHeader';
 import TeacherItem, { Teacher } from '../../components/TeacherItem';
 
+import nerdFaceEmoticon from '../../assets/images/icons/nerdFaceEmoticon.png';
+
 import {
   Container,
+  HeaderRight,
+  ProffysQuantity,
+  FilterContainer,
+  FilterText,
   TeacherListScroll,
   SearchForm,
   Label,
@@ -98,11 +103,22 @@ const TeacherList: React.FC = () => {
         title="Proffys disponíveis"
         pageTitle="Estudar"
         headerRight={
-          <BorderlessButton onPress={toggleFiltersVisible}>
-            <Feather name="filter" size={20} color="#fff" />
-          </BorderlessButton>
+          <HeaderRight>
+            <Image source={nerdFaceEmoticon} width={18} />
+            <ProffysQuantity>32 proffys</ProffysQuantity>
+          </HeaderRight>
         }
       >
+        <FilterContainer onPress={toggleFiltersVisible}>
+          <Feather name="filter" size={24} color="#04D361" />
+          <FilterText>Filtrar por dia, hora e matéria</FilterText>
+          <Ionicons
+            name={isFiltersVisible ? 'ios-arrow-up' : 'ios-arrow-down'}
+            size={18}
+            color="#A380F6"
+          />
+        </FilterContainer>
+
         {isFiltersVisible && (
           <SearchForm>
             <Label>Matéria</Label>
