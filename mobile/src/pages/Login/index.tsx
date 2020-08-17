@@ -1,9 +1,10 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import {
   KeyboardAvoidingView,
   Platform,
   ScrollView,
   Image,
+  Keyboard,
 } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
@@ -33,6 +34,7 @@ import {
 
 const Login: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
+  const scrollRef = useRef<ScrollView>(null);
   const [remember, setRemember] = useState(false);
   const [hasError] = useState(false);
   const { navigate } = useNavigation();
@@ -41,12 +43,33 @@ const Login: React.FC = () => {
     navigate('Landing');
   }
 
+  useEffect(() => {
+    const keyboardDidShowListener = Keyboard.addListener(
+      'keyboardDidShow',
+      () => {
+        scrollRef.current?.scrollToEnd({ animated: true });
+      },
+    );
+    const keyboardDidHideListener = Keyboard.addListener(
+      'keyboardDidHide',
+      () => {
+        scrollRef.current?.scrollTo({ y: 0 });
+      },
+    );
+
+    return () => {
+      keyboardDidShowListener.remove();
+      keyboardDidHideListener.remove();
+    };
+  }, []);
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
       enabled
     >
       <ScrollView
+        ref={scrollRef}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ flexGrow: 1 }}
       >
