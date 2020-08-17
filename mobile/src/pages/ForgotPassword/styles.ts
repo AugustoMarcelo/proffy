@@ -45,7 +45,7 @@ export const Subtitle = styled.Text`
   font-size: 14px;
   line-height: 24px;
   color: #6a6180;
-  width: 151px;
+  width: 180px;
   margin: 16px 0 40px;
 `;
 

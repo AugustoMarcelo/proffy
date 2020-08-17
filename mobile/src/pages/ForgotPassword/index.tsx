@@ -74,7 +74,7 @@ const ForgotPassword: React.FC = () => {
 
           <Form ref={formRef} onSubmit={handleSubmit}>
             <Title>Esqueceu sua senha?</Title>
-            <Subtitle>Não esquenta, vamos dar jeito nisso.</Subtitle>
+            <Subtitle>Não esquenta, {'\n'}vamos dar um jeito nisso.</Subtitle>
             <Input
               name="email"
               label="E-mail"
