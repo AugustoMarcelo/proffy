@@ -37,17 +37,8 @@ export const BackButton = styled.TouchableOpacity`
 `;
 
 export const PersonalDataSlide = styled.View`
-  flex: 1;
+  /* flex: 1; */
   padding: 0 32px;
-`;
-
-export const Content = styled.ScrollView.attrs({
-  contentContainerStyle: {
-    paddingTop: 180,
-    flexGrow: 1,
-  },
-})`
-  /* margin-top: 180px; */
 `;
 
 export const Title = styled.Text`

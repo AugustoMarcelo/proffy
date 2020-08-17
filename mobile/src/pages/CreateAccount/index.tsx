@@ -1,14 +1,19 @@
-import React, { useRef, useState } from 'react';
-import { KeyboardAvoidingView, Platform } from 'react-native';
+import React, { useRef, useState, useEffect } from 'react';
+import {
+  KeyboardAvoidingView,
+  Platform,
+  Keyboard,
+  ScrollView,
+} from 'react-native';
+import Swiper from 'react-native-swiper';
 import { Ionicons } from '@expo/vector-icons';
 import { StatusBar } from 'expo-status-bar';
 import { useNavigation } from '@react-navigation/native';
 import {
-  Swiper,
+  Swiper as SwiperStyled,
   PersonalDataSlide,
   CredentialsSlide,
   BackButton,
-  Content,
   Title,
   Description,
   Question,
@@ -22,17 +27,38 @@ import Input from '../../components/Input';
 import InputPassword from '../../components/InputPassword';
 
 const CreateAccount: React.FC = () => {
-  const swipeRef = useRef<typeof Swiper>(null);
+  const swipeRef = useRef<Swiper>(null);
+  const scrollPersonalDataRef = useRef<ScrollView>(null);
   const [hasError] = useState(false);
   const { goBack, navigate } = useNavigation();
 
   function handleGoToNextSlide() {
-    swipeRef.current.scrollBy(1);
+    swipeRef.current?.scrollBy(1);
   }
 
   function handleGoToPreviousSlide() {
-    swipeRef.current.scrollBy(-1);
+    swipeRef.current?.scrollBy(-1);
   }
+
+  useEffect(() => {
+    const keyboardDidShowListener = Keyboard.addListener(
+      'keyboardDidShow',
+      () => {
+        scrollPersonalDataRef.current?.scrollToEnd({ animated: true });
+      },
+    );
+    const keyboardDidHideListener = Keyboard.addListener(
+      'keyboardDidHide',
+      () => {
+        scrollPersonalDataRef.current?.scrollTo({ y: 0 });
+      },
+    );
+
+    return () => {
+      keyboardDidShowListener.remove();
+      keyboardDidHideListener.remove();
+    };
+  }, []);
 
   function handleSaveDataAndGoToNextPage() {
     console.log('save locally and go to the next step');
@@ -44,7 +70,7 @@ const CreateAccount: React.FC = () => {
   }
 
   return (
-    <Swiper ref={swipeRef} loop={false} scrollEnabled={false}>
+    <SwiperStyled ref={swipeRef} loop={false} scrollEnabled={false}>
       <PersonalDataSlide>
         <StatusBar style="dark" />
         <BackButton onPress={() => goBack()}>
@@ -52,9 +78,15 @@ const CreateAccount: React.FC = () => {
         </BackButton>
         <KeyboardAvoidingView
           behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-          style={{ flex: 1 }}
+          enabled
         >
-          <Content showsVerticalScrollIndicator={false}>
+          <ScrollView
+            showsVerticalScrollIndicator={false}
+            ref={scrollPersonalDataRef}
+            contentContainerStyle={{
+              paddingTop: 180,
+            }}
+          >
             <Title>Crie sua conta gratuita</Title>
             <Description>
               Basta preencher esses dados e você estará conosco
@@ -88,7 +120,7 @@ const CreateAccount: React.FC = () => {
                 <NextButtonText isDisabled={hasError}>Próximo</NextButtonText>
               </NextButton>
             </Form>
-          </Content>
+          </ScrollView>
         </KeyboardAvoidingView>
       </PersonalDataSlide>
 
@@ -100,7 +132,10 @@ const CreateAccount: React.FC = () => {
           behavior={Platform.OS === 'ios' ? 'padding' : undefined}
           style={{ flex: 1 }}
         >
-          <Content showsVerticalScrollIndicator={false}>
+          <ScrollView
+            showsVerticalScrollIndicator={false}
+            contentContainerStyle={{ flexGrow: 1, paddingTop: 180 }}
+          >
             <Title>Crie sua conta gratuita</Title>
             <Description>
               Basta preencher esses dados e você estará conosco
@@ -137,10 +172,10 @@ const CreateAccount: React.FC = () => {
                 </ConfirmButtonText>
               </ConfirmButton>
             </Form>
-          </Content>
+          </ScrollView>
         </KeyboardAvoidingView>
       </CredentialsSlide>
-    </Swiper>
+    </SwiperStyled>
   );
 };
 
