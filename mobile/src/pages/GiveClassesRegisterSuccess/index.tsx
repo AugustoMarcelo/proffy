@@ -34,7 +34,7 @@ const GiveClassesRegisterSuccess: React.FC = () => {
         <SuccessText>Cadastro Salvo!</SuccessText>
         <InfoText>
           Tudo certo, seu cadastro está na nossa lista de professores. Agora é
-          só ficar de olgo no seu WhatsApp.
+          só ficar de olho no seu WhatsApp.
         </InfoText>
       </Content>
       <GoToLoginButton onPress={handleGoToLogin}>
