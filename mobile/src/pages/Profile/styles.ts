@@ -150,7 +150,7 @@ export const Footer = styled.View`
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
   background-color: #fafafc;
-  padding: 25px 25px 0;
+  padding: 25px 25px;
 `;
 
 export const SaveButton = styled(RectButton)`
@@ -160,7 +160,6 @@ export const SaveButton = styled(RectButton)`
   border-radius: 8px;
   justify-content: center;
   align-items: center;
-  margin-bottom: 80px;
   align-self: stretch;
 `;
 
